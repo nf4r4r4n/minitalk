@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 09:33:38 by nfararan          #+#    #+#             */
-/*   Updated: 2024/04/28 16:49:16 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:58:35 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_send_char(int pid, int c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(200);
+		usleep(100);
 		byte_flag--;
 		mask >>= 1;
 	}
@@ -81,5 +81,6 @@ int	main(int argc, char **argv)
 	msg = argv[2];
 	ft_send_str(pid, ">>> ");
 	ft_send_str(pid, msg);
-	ft_send_char(pid, '\n');
+	ft_send_str(pid, "\n");
+	ft_send_char(pid, 0);
 }

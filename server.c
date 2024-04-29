@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 09:28:59 by nfararan          #+#    #+#             */
-/*   Updated: 2024/04/28 16:54:19 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:56:48 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ int	main(void)
 	ft_putstr_fd("[SERVER PID: ", 1);
 	ft_putnbr_fd(pid, 1);
 	ft_putstr_fd("]\n\n", 1);
-	signal(SIGUSR1, receive);
-	signal(SIGUSR2, receive);
 	while (1)
-		pause();
+	{
+		signal(SIGUSR1, receive);
+		signal(SIGUSR2, receive);
+	}
 }
