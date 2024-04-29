@@ -3,4 +3,5 @@ libft/*.a
 libft/*.o
 *.a
 *.o
-push_swap
+client
+server
