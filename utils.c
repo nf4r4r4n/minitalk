@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:50:01 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 21:54:48 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:09:53 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_server_info(int pid)
 void	ft_handle_errors(int argc, char **argv)
 {
 	int	i;
+
 	if (argc != 3 || !ft_strlen(argv[2]))
 	{
 		ft_putstr_fd("\33[1;31mError on usage\n\33[0m", 1);

@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:57:16 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:00:00 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:10:21 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_sig_configs(void (*act_hdl)(int, siginfo_t *, void *))
 	action.sa_flags = SA_SIGINFO;
 	action.sa_sigaction = act_hdl;
 	if (sigaction(SIGUSR1, &action, NULL) == -1)
-		ft_exit_failure("USR1: Signal config error");;
+		ft_exit_failure("USR1: Signal config error");
 	if (sigaction(SIGUSR2, &action, NULL) == -1)
 		ft_exit_failure("USR2: Signal config error");
 }
