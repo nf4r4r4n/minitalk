@@ -10,27 +10,27 @@ all:		client server
 $(NAME):	$(OBJS)
 	@make -C libft
 	@ar -r $(NAME).a $?
-	@cc -o $(NAME) $(CFLAGS) utils.c $(NAME).a $(LIBFT)
+	@cc -o $(NAME) $(CFLAGS) ft_banner.c utils.c $(NAME).a $(LIBFT)
 
 client:		$(CLIENT).o
 	@make -C libft
 	@ar -r $(CLIENT).a $?
-	@cc -o $(CLIENT) $(CFLAGS) utils.c $(CLIENT).a $(LIBFT)
+	@cc -o $(CLIENT) $(CFLAGS) ft_banner.c utils.c $(CLIENT).a $(LIBFT)
 
 client_bonus:		$(CLIENT_BNS).o
 	@make -C libft
 	@ar -r $(CLIENT_BNS).a $?
-	@cc -o $(CLIENT_BNS) $(CFLAGS) utils.c $(CLIENT_BNS).a $(LIBFT)
+	@cc -o $(CLIENT_BNS) $(CFLAGS) ft_banner.c utils.c $(CLIENT_BNS).a $(LIBFT)
 
 server:		$(SERVER).o
 	@make -C libft
 	@ar -r $(SERVER).a $?
-	@cc -o $(SERVER) $(CFLAGS) utils.c $(SERVER).a $(LIBFT)
+	@cc -o $(SERVER) $(CFLAGS) ft_banner.c utils.c $(SERVER).a $(LIBFT)
 
 server_bonus:		$(SERVER_BNS).o
 	@make -C libft
 	@ar -r $(SERVER_BNS).a $?
-	@cc -o $(SERVER_BNS) $(CFLAGS) utils.c $(SERVER_BNS).a $(LIBFT)
+	@cc -o $(SERVER_BNS) $(CFLAGS) ft_banner.c utils.c $(SERVER_BNS).a $(LIBFT)
 
 bonus:	client_bonus server_bonus
 

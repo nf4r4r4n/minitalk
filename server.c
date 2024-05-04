@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 09:28:59 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:16:26 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:50:27 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	main(void)
 	int	pid;
 
 	pid = (int)getpid();
+	ft_banner();
 	ft_server_info(pid);
 	while (1)
 		ft_sig_configs(ft_receive);
