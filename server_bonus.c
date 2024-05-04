@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:57:16 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:10:21 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:16:04 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_receive(int sig, siginfo_t *info, void *context)
 		g_blen = FLAG;
 		if (c == 0)
 		{
-			ft_putstr_fd("\n>>> ", 1);
+			ft_putstr_fd("\n\33[1;34m>>> \33[0m", 1);
 			if (kill(info->si_pid, SIGUSR1) == -1)
 				ft_exit_failure("USR1: Error on reply client");
 			usleep(100);

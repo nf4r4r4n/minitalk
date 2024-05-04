@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:50:01 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:09:53 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:20:21 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_server_info(int pid)
 {
-	ft_putstr_fd("[SERVER PID: ", 1);
+	ft_putstr_fd("\33[1;32m[SERVER PID: ", 1);
 	ft_putnbr_fd(pid, 1);
-	ft_putstr_fd("]\n\n>>> ", 1);
+	ft_putstr_fd("]\n\n\33[0\33[1;34m>>> \33[0m", 1);
 }
 
 void	ft_handle_errors(int argc, char **argv)
@@ -77,6 +77,8 @@ void	ft_send_char(int pid, int c)
 
 void	ft_exit_failure(char *msg)
 {
-	ft_putendl_fd(msg, 1);
+	ft_putstr_fd("\33[1;31m", 1);
+	ft_putstr_fd(msg, 1);
+	ft_putendl_fd("\33[0m", 1);
 	exit(1);
 }

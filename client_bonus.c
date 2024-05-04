@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:57:42 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:05:53 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:14:13 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 
 	ft_handle_errors(argc, argv);
 	if (signal(SIGUSR1, ft_msg_received) == SIG_ERR)
-		ft_exit_failure("\33[1;31mUSR1: Error while receiving signal\33[0m");
+		ft_exit_failure("USR1: Error while receiving signal");
 	pid = ft_atoi(argv[1]);
 	msg = argv[2];
 	ft_send_str(pid, msg);

@@ -6,7 +6,7 @@
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 09:28:59 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:03:38 by nfararan         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:16:26 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_receive(int sig)
 		g_blen = FLAG;
 		if (c == 0)
 		{
-			ft_putstr_fd("\n>>> ", 1);
+			ft_putstr_fd("\n\33[1;34m>>> \33[0m", 1);
 			return ;
 		}
 		ft_putchar_fd(c, 1);
