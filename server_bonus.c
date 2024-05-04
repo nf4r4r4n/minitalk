@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfararan <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 09:28:59 by nfararan          #+#    #+#             */
-/*   Updated: 2024/05/04 22:03:38 by nfararan         ###   ########.fr       */
+/*   Created: 2024/05/04 11:57:16 by nfararan          #+#    #+#             */
+/*   Updated: 2024/05/04 22:00:00 by nfararan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ int	g_blen = FLAG;
  *  - and repeat that until g_blen reaches the FLAG to write the
  *  character to the output.
  */
-static void	ft_receive(int sig)
+static void	ft_receive(int sig, siginfo_t *info, void *context)
 {
 	static char	c;
 
+	(void)context;
 	if (g_blen == FLAG)
 		c = 0;
 	if (sig == SIGUSR2)
@@ -48,17 +49,24 @@ static void	ft_receive(int sig)
 		if (c == 0)
 		{
 			ft_putstr_fd("\n>>> ", 1);
+			if (kill(info->si_pid, SIGUSR1) == -1)
+				ft_exit_failure("USR1: Error on reply client");
+			usleep(100);
 			return ;
 		}
 		ft_putchar_fd(c, 1);
 	}
 }
 
-static void	ft_sig_configs(void (*ft_handler)(int))
+static void	ft_sig_configs(void (*act_hdl)(int, siginfo_t *, void *))
 {
-	if (signal(SIGUSR1, ft_handler) == SIG_ERR)
-		ft_exit_failure("USR1: Signal config error");
-	if (signal(SIGUSR2, ft_handler) == SIG_ERR)
+	struct sigaction	action;
+
+	action.sa_flags = SA_SIGINFO;
+	action.sa_sigaction = act_hdl;
+	if (sigaction(SIGUSR1, &action, NULL) == -1)
+		ft_exit_failure("USR1: Signal config error");;
+	if (sigaction(SIGUSR2, &action, NULL) == -1)
 		ft_exit_failure("USR2: Signal config error");
 }
 
